@@ -1,0 +1,104 @@
+/* Background: Dark green with diagonal red stripes (thicker version of the previous pattern) */
+body {
+    background: linear-gradient(45deg, darkgreen 25%, red 25%, red 50%, darkgreen 50%, darkgreen 75%, red 75%);
+    background-size: 30px 30px; /* Adjusted for thicker lines */
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 20vh;
+    overflow: hidden; /* Prevent scrollbars due to falling gifts */
+}
+.question {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+    transition: transform 0.2s ease;
+}
+.button:hover {
+    background-color: darkred;
+    transform: scale(1.1);
+}
+/* Gift Box Styling */
+.gift {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 15px; /* Rounded corners */
+    border: 2px solid white;
+    box-shadow: 0 0 10px white;
+    animation: fall 4s linear infinite;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure the plus sign doesn't overflow */
+}
+/* Plus Sign Inside Gift */
+.gift::before,
+.gift::after {
+    content: '';
+    position: absolute;
+    background-color: green;
+    border-radius: 2px; /* Smooth edges for the lines */
+}
+/* Horizontal Line */
+.gift::before {
+    width: 30px;
+    height: 6px;
+}
+/* Vertical Line */
+.gift::after {
+    width: 6px;
+    height: 30px;
+}
+/* Falling Animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-200px); /* Completely off-screen */
+    }
+    100% {
+        transform: translateY(100vh); /* Fall to the bottom */
+    }
+}
+/* Popup Styling */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px black;
+    z-index: 1000;
+}
+.popup a {
+    color: yellow;
+    text-decoration: underline;
+}
+.popup-close {
+    cursor: pointer;
+    background: red;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
